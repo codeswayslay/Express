@@ -1,0 +1,32 @@
+<% include partials/header %>
+
+    <body>
+        <h1>
+            HELLO FROM EJS</h1>
+        <h1>
+            <%= title %>
+        </h1>
+        <% if(errors) { %>
+            <% errors.forEach((error) => { %>
+                <li>
+                    <%= error.msg %>
+                </li>
+                <% }) %>
+                    <% }%>
+                        <form id="ajax-contact" method="post" action="/users/add">
+                            <label>Name: </label><br>
+                            <input type="text" name="name"><br>
+                            <label>Email: </label><br>
+                            <input type="text" name="email"><br><br>
+                            <input type="submit" value="Submit">
+                        </form>
+                        <ul>
+                            <% users.forEach((user) => { %>
+                                <li>
+                                    <%= user.name %> -
+                                        <a href="#" class="deleteUser" data-id="<%= user._id %>">Delete</a>
+                                </li>
+                                <% }) %>
+                        </ul>
+    </body>
+    <% include partials/footer %>
